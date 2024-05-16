@@ -1,11 +1,18 @@
 ### Background
 This is a fork from https://github.com/bsnyder/activemq-in-action. 
 
-Original repo is not able to compile, use this fork to sovle the issue so we can run examples while reading the book: https://www.manning.com/books/activemq-in-action
+Original repo is not able to compile, use this fork to sovle the issues so at least we can run examples while reading the book: https://www.manning.com/books/activemq-in-action
 
 
 ### Changes
-I did some tweaks to make it compile or run. So code in this fork is not ready to merge back to original repo, though original repo seems not active for a long time anyway.
+I did some quick tweaks to make it compile run. So code in this fork is not ready to merge back to original repo, although original repo seems not active for a long time anyway.
+
+### Environment
+Run with JDK 17.
+
+In IntelliJ, File -> Project Structure:
+* Set Project -> SDK as JDK 17
+
 
 ### Build
 `mvn clean install` 
@@ -13,7 +20,6 @@ I did some tweaks to make it compile or run. So code in this fork is not ready t
 Note: this command is slow about 13 mins to finish, seems due to some packages (which are quite old) are missing POM and Maven is looking for it and download from different urls.
 
 Woudld suggest build it once and run each single class through IntelliJ.
-
 
 
 
