@@ -47,6 +47,8 @@ public class Server implements MessageListener {
 		session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
 		Destination adminQueue = session.createQueue(requestQueue);
 
+		// notice the default `Destination` is null because we want to
+		// send message according to `replyTo` in the receiving JMX message
 		producer = session.createProducer(null);
 		producer.setDeliveryMode(DeliveryMode.NON_PERSISTENT);
 

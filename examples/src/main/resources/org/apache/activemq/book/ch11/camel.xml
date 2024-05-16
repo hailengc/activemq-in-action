@@ -6,7 +6,7 @@
 
         <!-- You can use a <packages> element for each root package to search for Java routes -->
         <packageScan>
-           <packages>org.foo.bar</packages>
+           <package>org.foo.bar</package>
         </packageScan>
 
         <!-- You can use Spring XML syntax to define the routes here using the <route> element -->

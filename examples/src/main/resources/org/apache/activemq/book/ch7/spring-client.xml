@@ -3,6 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation=" http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
+  <!-- *** Configuring JMS connection -->
   <bean id="jmsConnectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
     <property name="brokerURL" value="tcp://localhost:61616" />
     <property name="userName" value="admin" />
@@ -14,6 +15,7 @@
     <property name="connectionFactory" ref="jmsConnectionFactory" />
   </bean>
 
+  <!-- *** Configuring JMS destinations -->
   <bean id="cscoDest" class="org.apache.activemq.command.ActiveMQTopic">
     <constructor-arg value="STOCKS.CSCO" />
   </bean>
@@ -22,11 +24,12 @@
     <constructor-arg value="STOCKS.ORCL" />
   </bean>
 
+  <!-- *** Defining JMS consumers-->
   <!-- The message listener -->
   <bean id="portfolioListener" class="org.apache.activemq.book.ch3.portfolio.Listener">
   </bean>
 
-  <!-- Spring DMLC -->
+  <!-- Spring DMLC, default message listener container (MLC: see http://mng.bz/LJti)-->
   <bean id="cscoConsumer"
     class="org.springframework.jms.listener.DefaultMessageListenerContainer">
     <property name="connectionFactory" ref="jmsConnectionFactory" />
@@ -34,7 +37,7 @@
     <property name="messageListener" ref="portfolioListener" />
   </bean>
 
-  <!-- Spring DMLC -->
+ <!-- Spring DMLC, default message listener container (MLC: see http://mng.bz/LJti)-->
   <bean id="orclConsumer"
     class="org.springframework.jms.listener.DefaultMessageListenerContainer">
     <property name="connectionFactory" ref="jmsConnectionFactory" />
@@ -42,6 +45,7 @@
     <property name="messageListener" ref="portfolioListener" />
   </bean>
 
+  <!--  *** Creating JMS producers-->
   <!-- Spring JMS Template -->
   <bean id="jmsTemplate" class="org.springframework.jms.core.JmsTemplate">
     <property name="connectionFactory" ref="pooledJmsConnectionFactory" />

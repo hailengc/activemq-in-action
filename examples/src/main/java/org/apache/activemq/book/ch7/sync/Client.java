@@ -59,6 +59,8 @@ public class Client implements MessageListener {
 		txtMessage.setJMSReplyTo(tempDest);
 
 		String correlationId = UUID.randomUUID().toString();
+
+		// set JMS correlationID, so client knows reply of which request it is waiting for
 		txtMessage.setJMSCorrelationID(correlationId);
 		this.producer.send(txtMessage);
 	}

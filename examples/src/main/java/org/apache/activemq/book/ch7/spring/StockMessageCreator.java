@@ -15,12 +15,13 @@ import org.springframework.jms.core.MessageCreator;
 public class StockMessageCreator implements MessageCreator {
 
 	private int MAX_DELTA_PERCENT = 1;
-	private Map<Destination, Double> LAST_PRICES = new Hashtable<Destination, Double>();
+	private Map<String, Double> LAST_PRICES = new Hashtable<String, Double>();
 
-	Destination stock;
+	String stock;
 
-	public StockMessageCreator(Destination stock) {
-		this.stock = stock;
+	public StockMessageCreator(Destination destination) {
+		// get stock name from the destination name, strip off the prefix "topic://"
+		this.stock = destination.toString().substring(8);
 	}
 
 	public Message createMessage(Session session) throws JMSException {

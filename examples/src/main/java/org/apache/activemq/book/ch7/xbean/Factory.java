@@ -10,7 +10,7 @@ public class Factory {
     public static void main(String[] args) throws Exception {
         System.setProperty("activemq.base", System.getProperty("user.dir"));
         BrokerService broker = BrokerFactory.createBroker(
-                new URI("xbean:target/classes/org/apache/activemq/book/ch7/activemq-simple.xml"));
+                new URI("xbean:src/main/resources/org/apache/activemq/book/ch6/activemq-simple.xml"));
         broker.start();
 
         System.out.println();

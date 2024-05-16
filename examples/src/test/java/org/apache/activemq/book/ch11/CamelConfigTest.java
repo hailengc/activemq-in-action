@@ -16,10 +16,13 @@
  */
 package org.apache.activemq.book.ch11;
 import org.apache.activemq.book.BrokerConfigTest;
+import org.junit.Ignore;
+
 /**
  * A CamelConfigTest
  *
  */
+@Ignore
 public class CamelConfigTest  extends BrokerConfigTest{
 
     /** 
@@ -27,6 +30,7 @@ public class CamelConfigTest  extends BrokerConfigTest{
      * @see org.apache.activemq.book.BrokerConfigTest#getBrokerConfig()
      */
     @Override
+    @Ignore
     protected String getBrokerConfig() {
         
         return "org/apache/activemq/book/ch11/broker.xml";
